@@ -1,0 +1,24 @@
+{
+  "kind": "custom_token",
+  "token": {
+    "contract": "SpectraToken",
+    "name": "Spectra",
+    "symbol": "SPECTRA",
+    "decimals": 18,
+    "constructorArgs": [],
+    "totalSupply": "1000000000000000000000000000"
+  },
+  "contracts": [],
+  "pool": {
+    "pairedCurrency": "0xd34a99bc0f67ae1bbd63c660e6d0b0dd03e263b7",
+    "fee": 12500,
+    "tickSpacing": 60,
+    "initialPrice": "79228162514264337593543950336"
+  },
+  "economics": {
+    "poolBps": 8800,
+    "initialMarketCapWei": "2500000000000000000000",
+    "remainderTo": "0x6bf192ebef135e0f645e99d59d9bf44e7711606c"
+  },
+  "notes": "SpectraToken (src/SpectraToken.sol) is a fixed-supply ERC-20 with no constructor arguments. Its constructor mints the whole supply, 1,000,000,000 SPECTRA with 18 decimals (1000000000000000000000000000 minor units), once to msg.sender, which in the launch is the ProjectFactory. The token has no owner, no minter, no pause, no blacklist, no freeze and no transfer fee: every transfer and transferFrom moves exactly the amount requested for every caller, so the factory's transfer to the MerkleDistributor, the single-sided pool seed through the Uniswap v4 PoolManager, contributor claims and trader swaps all arrive whole. Nothing can mint after deployment. Holders may burn their own tokens, and burnFrom works only against an allowance the holder granted, so the supply can only shrink and only by a holder's own choice. Transfers and approvals to the zero address revert. The contract inherits nothing and calls no library; its runtime contains no DELEGATECALL, CALLCODE or SELFDESTRUCT. This launch deploys no application contracts, and no contract in the tree is allocated, reserved or sent any of the supply. The pool pairs with IMD; pool.initialPrice is provenance only, the deployer derives the opening price from economics.initialMarketCapWei and totalSupply."
+}
